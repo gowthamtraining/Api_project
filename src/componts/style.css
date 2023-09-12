@@ -1,0 +1,158 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    gap: 50px;
+    background: #313866
+}
+.container button{
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+   color: #F5F5F5;
+   background-color: #FFA41B;
+   transition: background-color 1s ease;
+}
+.wraper{
+    display: inline-flex;
+}
+.wraper .static-text{
+    color: #fff;
+    font-size: 60px;
+    font-weight: 400;
+}
+.wraper .dynamic-text{
+    margin-left: 15px;
+    line-height: 80px;
+    height: 90px;
+    overflow: hidden;
+}
+
+.wraper .dynamic-text li{
+    list-style: none;
+    color: #F5F5F5;
+    font-size: 60px;
+    font-weight: 500;
+    position: relative;
+    top: 0;
+    animation: slide 6s steps(4) infinite;
+    
+}
+@keyframes slide{
+    100%{
+       top: -360px;
+    }
+}
+.wraper .dynamic-text li span{
+    position: relative;
+}
+.wraper .dynamic-text li span:after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-left: 2px solid #F5F5F5;
+    background:#313866;
+    left: 0;
+    animation: typing 1.35s steps(10) infinite;
+}
+@keyframes typing{
+    100%{
+        left: 100%;
+        margin: 0 -35px 0 35px;
+    }
+}
+.container button:hover{
+    background-color: #F86F03;
+}
+.table-container{
+    width: 80%;
+    margin: o auto;
+   
+}
+.table-container thead{
+    height: 50px;
+    background-color: #33BBC5;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+}
+.table-container tbody tr{
+    height: 50px;
+}
+.table-container tbody tr:nth-of-type(even){
+    background-color: #F0F0F0;
+}
+.ListButton{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.todo-container{
+    display: flex;
+    justify-content: space-between;
+}
+.createButton{
+    align-self: self-start;
+    justify-self: end;
+    position: fixed;
+    right: 70px;
+    top: 250px;
+    background-color: #FFA41B;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 0;
+    color: #ffff;
+}
+.Createcontainer{
+    width: 400px;
+    border: 1px solid black;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #313866;
+    color: #F5F5F5;
+}
+.mainCreate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 10px;
+}
+.mainCreate h1{
+    font-size: 3rem;
+    text-transform: capitalize;
+}
+.Createcontainer input{
+    border: 1px solid black;
+    outline: none;
+    padding: 2px 6px;
+    height: 29px;
+    width: 200px;
+    color: #313866;
+}
+.title,.description{
+    display: flex;
+    gap: 10px;
+}
+.title{
+    gap: 60px;
+}
+.CreateButton{
+    background-color: #FFA41B;
+    align-self: center;
+    padding: 8px 20px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+}
