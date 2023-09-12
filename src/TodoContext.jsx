@@ -2,15 +2,18 @@ import { createContext, useContext, useState } from "react";
 
 const TodoContext = createContext()
 export const TodoProvider=({children})=>{
-    const [isloading,setLoading] =useState(false)
+    const [isloading,setLoading] =useState(true)
     const [list,setList] = useState([])
     const[todoId,setTodoId] = useState(0)
     const [EditTodo, setEditTodo] = useState({ title:"", description: "" })
-    const [createTodo, setCreateTodo] = useState({ title: "", description: "" })
+    const [createTodo, setCreateTodo] = useState(null)
     const GetTodos=()=>{
-        setLoading(true)
+        setLoading(false)
         const url = "https://freeapi-app-production-5e31.up.railway.app/api/v1/todos"
-        fetch(url).then(res=>res.json()).then(res=>setList([...res.data]))
+        fetch(url).then(res=>res.json()).then(res=>setList([...res.data])).catch((error)=>{
+          console.log(error)
+          setLoading(false)
+        })
     }
     function changeEditDescription(e) {
             setEditTodo({ ...EditTodo, description: e.target.value })

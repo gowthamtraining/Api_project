@@ -5,11 +5,14 @@ import { TodoFetcher } from '../App'
 import moment from "moment"
 import { useTodo } from '../TodoContext'
 const TodoList = () => {
-  const {list,GetTodos,TodoDelete,getEditData,changeComplete} = useTodo()
+  const {list,GetTodos,TodoDelete,getEditData,changeComplete,isloading} = useTodo()
   useEffect(()=>{
     GetTodos()
   },[])
   return (
+    isloading ? (
+      <p>"loading"</p>
+    ):
     <div className="todo-container">
       <table className="table-container">
       <thead>
