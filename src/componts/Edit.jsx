@@ -1,13 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useTodo } from '../TodoContext'
 // import { TodoFetcher } from '../App'
 
 const Edit = () => {
-  const {changeEditDescription,changeEditTitle,updateTodo,GetIdTodo,EditTodo} = useTodo()
+  const {changeEditDescription,changeEditTitle,updateTodo,EditTodo,setTodoId,GetIdTodo} = useTodo()
   useEffect(()=>{
     GetIdTodo()
   },[])
+  const faram = useParams()
+  const {Id}= faram
+  console.log(Id)
+  setTodoId(Id)
+ 
   return (
     <div className="mainCreate">
       <h1>Create-Page</h1>

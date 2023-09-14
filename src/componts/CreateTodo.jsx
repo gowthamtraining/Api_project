@@ -2,8 +2,15 @@ import React, { useContext, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { TodoFetcher } from '../App'
 import { useTodo } from '../TodoContext'
+import useForm from './useForm'
 const CreateTodo = () => {
   const {changedescription,createSubmit,changeTitle,createTodo} = useTodo()
+  const {formdata,HandleChange,HandleSubmit} = useForm({title:"",description:""},Validation)
+  function Validation(formdata){
+    if(formdata.title === ""){
+      return false
+    }
+  }
   return (
     <div className="mainCreate">
       <h1>Create-Page</h1>

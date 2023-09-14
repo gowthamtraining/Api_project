@@ -13,7 +13,7 @@ const App = () => {
           <Route path='/' element={<Header/>}/>
           <Route path='/TodoList' element={<TodoList/>}/>
           <Route path='/Create' element={<CreateTodo/>}/>
-          <Route path='/Edit' element={<Edit/>}/>
+          <Route path='/Edit/:Id' element={<Edit/>}/>
       </Routes>
       </TodoProvider>
     </Router>

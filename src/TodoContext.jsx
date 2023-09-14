@@ -6,7 +6,7 @@ export const TodoProvider=({children})=>{
     const [list,setList] = useState([])
     const[todoId,setTodoId] = useState(0)
     const [EditTodo, setEditTodo] = useState({ title:"", description: "" })
-    const [createTodo, setCreateTodo] = useState(null)
+    const [createTodo, setCreateTodo] = useState({title:"", description: "" })
     const GetTodos=()=>{
         setLoading(false)
         const url = "https://freeapi-app-production-5e31.up.railway.app/api/v1/todos"
@@ -20,11 +20,7 @@ export const TodoProvider=({children})=>{
     }
     function changedescription(e) {
         setCreateTodo({ ...createTodo, description: e.target.value })
-      }
-    const GetIdTodo=()=>{
-        const url = `https://freeapi-app-production-5e31.up.railway.app/api/v1/todos/${todoId}`
-        fetch(url).then(res=>res.json()).then(res=>setEditTodo({...res.data}))
-    }
+      } 
     function updateTodo(){
         const url = `https://freeapi-app-production-5e31.up.railway.app/api/v1/todos/${todoId}`
         fetch(url,{
@@ -46,7 +42,7 @@ export const TodoProvider=({children})=>{
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(createTodo)
-            }).then(()=>GetTodos())
+            }).then(GetTodos())
             setCreateTodo({ title: "", description: "" })
           }
     function TodoDelete(id){
@@ -57,9 +53,10 @@ export const TodoProvider=({children})=>{
             }).then(()=>GetTodos())
             
     }
-    function getEditData(id){
-        setTodoId(id)
-      }
+      const GetIdTodo=()=>{
+        const url = `https://freeapi-app-production-5e31.up.railway.app/api/v1/todos/${todoId}`
+        fetch(url).then(res=>res.json()).then(res=>setEditTodo({...res.data}))
+    }
     function changeComplete(id){
         const url = `https://freeapi-app-production-5e31.up.railway.app/api/v1/todos/toggle/status/${id}`
         fetch(url,{
@@ -68,7 +65,7 @@ export const TodoProvider=({children})=>{
         })
       }
     return (
-        <TodoContext.Provider value={{list,isloading,GetTodos,changedescription,createSubmit,changeTitle,createTodo,setCreateTodo,todoId,TodoDelete,getEditData,changeComplete,changeEditDescription,changeEditTitle,updateTodo,GetIdTodo,EditTodo}}>
+        <TodoContext.Provider value={{list,isloading,setEditTodo,GetTodos,changedescription,createSubmit,changeTitle,createTodo,setCreateTodo,todoId,TodoDelete,changeComplete,changeEditDescription,changeEditTitle,updateTodo,EditTodo,setTodoId,GetIdTodo}}>
             {children}
         </TodoContext.Provider>
     )
